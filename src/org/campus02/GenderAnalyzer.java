@@ -26,13 +26,23 @@ public class GenderAnalyzer extends PersonAnalyzer {
                 heightM += person.getSize();
             }
 
-            if (person.getGender() == 'F') {
+            if (person.getGender() == 'W') {
                 countW ++;
                 heightW = heightW + person.getSize();
             }
         }
 
-        avgM = heightM / countM;
-        avgW = heightW / countW;
+        if (countM == 0){
+            avgM = 0;
+        } else {
+            avgM = heightM / countM;
+        }
+
+        if (countW == 0){
+            avgW = 0;
+        } else {
+            avgW = heightW / countW;
+        }
+
     }
 }
