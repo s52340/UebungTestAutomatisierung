@@ -19,9 +19,9 @@ class MaxSalaryAnalyzerTest {
 
     Person person1;
     Person person2;
-
     Person person3;
     // besser 3 / 4 Personen
+
     ArrayList<Person> persons = new ArrayList<>();
 
     @BeforeEach
@@ -43,9 +43,26 @@ class MaxSalaryAnalyzerTest {
         maxSalaryAnalyzer.analyze();
 
         HashSet<Person> personsWithHighestSalary = maxSalaryAnalyzer.getPersonsWithHighestSalary();
-        Person personWithHighestSalary = new ArrayList<>(personsWithHighestSalary).get(0);
+        Person personWithHighestSalary = new ArrayList<>(personsWithHighestSalary).get(0); //verwandle hashset in eine arraylist um auf ein Elemt zugreifen zu können und speichere das in einer Variable(Person)
 
         Assertions.assertEquals(1, personsWithHighestSalary.size());
         Assertions.assertEquals(person2, personWithHighestSalary);
+        Assertions.assertEquals(4000, personWithHighestSalary.getSalary());
+    }
+
+    @Test
+    void analyzeWithTwoHighestSalaries() {
+        Person person4 = new Person("Verena","Thaler",'W', 27,"Austria", 4000,"blau",48,160 );
+        persons.add(person4);
+
+        MaxSalaryAnalyzer maxSalaryAnalyzer = new MaxSalaryAnalyzer();
+        maxSalaryAnalyzer.setPersons(persons);
+        maxSalaryAnalyzer.analyze();
+
+        HashSet<Person> personsWithHighestSalary = maxSalaryAnalyzer.getPersonsWithHighestSalary();
+        Person personWithHighestSalary = new ArrayList<>(personsWithHighestSalary).get(0);
+
+        Assertions.assertEquals(2, personsWithHighestSalary.size());
+        Assertions.assertEquals(4000, personWithHighestSalary.getSalary());
     }
 }

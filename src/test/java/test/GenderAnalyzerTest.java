@@ -48,4 +48,13 @@ class GenderAnalyzerTest {
 
 
     }
+
+    @Test
+    void analyzeEmpty() {
+        GenderAnalyzer genderAnalyzer = new GenderAnalyzer();
+        genderAnalyzer.analyze();
+
+        Assertions.assertEquals(0, genderAnalyzer.getAvgM());
+        Assertions.assertEquals(0, genderAnalyzer.getAvgM());
+    }
 }
